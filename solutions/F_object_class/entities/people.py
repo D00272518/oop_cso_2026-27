@@ -1,3 +1,6 @@
+from types import NotImplementedType
+
+
 class Person:
     def __init__(self, first_name:str, last_name:str, age:int, is_left:bool):
         self.first_name = first_name
@@ -11,6 +14,23 @@ class Person:
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name} is {self.age}"
 
+    def __eq__(self, other: object) -> bool | NotImplementedType:
+        if not isinstance(other, Person):
+            return NotImplemented
+
+        if self.first_name.lower() != other.first_name.lower():
+            return False
+
+        if self.last_name.lower() != other.last_name.lower():
+            return False
+
+        if self.age != other.age:
+            return False
+
+        if self.is_left != other.is_left:
+            return False
+
+        return True
 
 
 class Employee:

@@ -1,3 +1,6 @@
+from types import NotImplementedType
+
+
 class Rectangle:
     def __init__(self, length, width, colour="Blue"):
         self.length = length
@@ -9,6 +12,21 @@ class Rectangle:
 
     def calc_area(self):
         return self.length * self.width
+
+    def __eq__(self, other: object) -> bool | NotImplementedType:
+        if not isinstance(other, Rectangle):
+            return NotImplemented
+
+        if self.length != other.length:
+            return False
+
+        if self.width != other.width:
+            return False
+
+        if self.colour.lower() != other.colour.lower():
+            return False
+
+        return True
 
 
 if __name__ == "__main__":
