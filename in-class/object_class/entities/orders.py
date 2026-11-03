@@ -126,6 +126,10 @@ class Pizza:
     def __ne__(self, other: object) -> bool | NotImplementedType:
         return not self == other
 
+
+    def __hash__(self) -> int:
+        return hash((self._size, self.toppings))
+
 class Order:
     def __init__(self, username: str):
         if not username:
@@ -200,8 +204,6 @@ if __name__ == "__main__":
     print(repr(pizza1))
     print(f"{pizza1:simple}")
     #pizza1.display()
-
-    print(f"{pizza1 == "hello"}")
 
     pizza2 = Pizza(["ham", "cheese", "pineapple"], "small")
     #pizza2.display()
